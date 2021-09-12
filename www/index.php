@@ -15,20 +15,6 @@ $actionName = isset($_GET['action']) ? $_GET['action'] : 'index';
 echo 'Функция формирующая страницу (Экшн) = ' . $actionName . '<br />';
 
 /*
- * подключаем контролер
- */
-include_once '../controllers/' . $controllerName . 'Controller.php';
-
-/*
- * Формируем название функции 
- */
-$function = $actionName . 'Action';
-
-echo 'Полное название вызываемой функции = ' . $function . '<br/>';
-
-$function();
-
-/*
  * Константы для обращения к контролерам
  */
 define('PathPrefix', '../controllers/');
@@ -38,7 +24,8 @@ define('PHP', '.php');
 function loadPage(string $controllerName, string $actionName = 'index'): void {
     include_once PathPrefix . $controllerName . PathPostfix . PHP;
     $function = $actionName . 'Action';
-    $function(); 
+    $function();
 }
 
+loadPage($controllerName, $actionName);
 ;
